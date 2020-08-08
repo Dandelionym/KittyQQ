@@ -1,7 +1,6 @@
 package com.Kitty.utils;
 
 import com.dandelion.dao.UserMapper;
-import com.dandelion.pojo.User;
 import com.dandelion.utils.SQLHelper;
 import org.apache.ibatis.session.SqlSession;
 

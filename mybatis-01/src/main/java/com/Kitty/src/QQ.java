@@ -17,7 +17,7 @@ public class QQ {
     private JFrame frame = new JFrame("KittyQQ v1.0");
 
 
-    private QQ() {
+    public QQ() {
         logButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,13 +58,16 @@ public class QQ {
         try{
             Boolean flag = SqlUtils.getPassword(username).equals(password);
             if(flag){
+                // 登录成功对状态下，将用户名显示在主面板
+                Kitty.setStatus_user(username);
                 frame.dispose();
                 mainBoard();
+
             }else{
                 JOptionPane.showMessageDialog(null, "账号或密码不正确！");
             }
         } catch (Exception e1){
-            JOptionPane.showMessageDialog(null, "账号或密码不正确！");
+            JOptionPane.showMessageDialog(null, "出现了意外错误！");
         }
     }
 
@@ -84,6 +87,10 @@ public class QQ {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
+    }
+
+    public void ref_init() {
+        init();
     }
 
     public static void main(String[] args) {

@@ -6,13 +6,25 @@
 
 
 <mapper namespace="com.dandelion.dao.UserMapper">
+
+
     <insert id="insertObj" parameterType="com.dandelion.pojo.User">
         insert into BMS.users (name, pswd, addr_provence, addr_city, cons, motto) values (#{name}, #{pswd}, #{addr_provence}, #{addr_city}, #{cons}, #{motto});
     </insert>
 
 
+    <insert id="insert_friend">
+        insert into BMS.user_friends (user_id, friend_id) values (#{0}, #{1});
+    </insert>
+
+
     <select id="getPasswordByName" resultType="java.lang.String">
-        select BMS.users.pswd from BMS.users where name=#{name}
+        select BMS.users.pswd from BMS.users where name=#{name};
+    </select>
+
+
+    <select id="getUserByName" resultType="com.dandelion.pojo.User">
+        select * from BMS.users where name=#{name};
     </select>
 
 

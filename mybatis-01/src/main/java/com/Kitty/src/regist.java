@@ -22,6 +22,7 @@ public class regist {
     private JTextField cons;
     private JTextField motto;
     private JButton reButton;
+    static JFrame regist_board = new JFrame("Register");
 
 
     public regist() {
@@ -34,7 +35,6 @@ public class regist {
     }
 
     public static void init() {
-        JFrame regist_board = new JFrame("Register");
         regist_board.setBounds(400, 115, 870, 820);
         regist_board.setContentPane(new regist().panel1);
         regist_board.setResizable(false);
@@ -66,6 +66,13 @@ public class regist {
 
                 sqlSession.commit();
                 sqlSession.close();
+
+                if(status) {
+                    System.out.println("注册成功！");
+                    regist_board.dispose();
+                    new QQ().ref_init();
+
+                }
 
             }
         } catch (Exception e1){
