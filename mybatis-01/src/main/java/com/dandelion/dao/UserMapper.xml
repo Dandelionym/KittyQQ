@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.dandelion.dao.UserMapper">
+    <insert id="insertObj" parameterType="com.dandelion.pojo.User">
+        insert into BMS.users (name, pswd, addr_provence, addr_city, cons, motto) values (#{name}, #{pswd}, #{addr_provence}, #{addr_city}, #{cons}, #{motto});
+    </insert>
+
+
+    <select id="getPasswordByName" resultType="java.lang.String">
+        select BMS.users.pswd from BMS.users where name=#{name}
+    </select>
+
+
+</mapper>
+
